@@ -5,4 +5,9 @@
     <string name="plant_chile">Planta \nChile</string>
     <string name="plant_usa">Planta \nUSA</string>
     <string name="HeatMap">Heat map</string>
+    <string name="plant_Colombia">Planta \nColombia</string>
+    <string name="billing">facturacion</string>
+    <string name="operating_cost">Costos \nOperativos</string>
+    <string name="Energy">Energia \nMW</string>
+    <string name="number_operators">Numero \nOperarios</string>
 </resources>
