@@ -128,26 +128,40 @@
                             app:colorvalue="@{viewModel.getOneOne}"
                             app:compareOne="@{viewModel.getOneTwo}"
                             app:compareTwo="@{viewModel.getOneThree}"
-
                              />
 
                         <EditText
                             android:id="@+id/editTextNumber32"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:inputType="number" />
+                            android:inputType="number"
+                            android:text="@={viewModel._twoOne}"
+                            app:colorvalue="@{viewModel.getTwoOne}"
+                            app:compareOne="@{viewModel.getTwoThree}"
+                            app:compareTwo="@{viewModel.getTwoTwo}"
+                            />
 
                         <EditText
                             android:id="@+id/editTextNumber33"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:inputType="number" />
+                            android:inputType="number"
+                            android:text="@={viewModel._threeOne}"
+                            app:colorvalue="@{viewModel.getThreeOne}"
+                            app:compareOne="@{viewModel.getThreeThree}"
+                            app:compareTwo="@{viewModel.getThreeTwo}"
+                            />
 
                         <EditText
                             android:id="@+id/editTextNumber34"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:inputType="number" />
+                            android:inputType="number"
+                            android:text="@={viewModel._fourOne}"
+                            app:colorvalue="@{viewModel.getFourOne}"
+                            app:compareOne="@{viewModel.getFourTwo}"
+                            app:compareTwo="@{viewModel.getFourThree}"
+                            />
 
                     </TableRow>
 
@@ -180,19 +194,34 @@
                             android:id="@+id/editTextNumber35"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:inputType="number" />
+                            android:inputType="number"
+                            android:text="@={viewModel._twoTwo}"
+                            app:colorvalue="@{viewModel.getTwoTwo}"
+                            app:compareOne="@{viewModel.getTwoOne}"
+                            app:compareTwo="@{viewModel.getTwoThree}"
+                            />
 
                         <EditText
                             android:id="@+id/editTextNumber36"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:inputType="number" />
+                            android:inputType="number"
+                            android:text="@={viewModel._threeTwo}"
+                            app:colorvalue="@{viewModel.getThreeTwo}"
+                            app:compareOne="@{viewModel.getThreeOne}"
+                            app:compareTwo="@{viewModel.getThreeThree}"
+                            />
 
                         <EditText
                             android:id="@+id/editTextNumber37"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:inputType="number" />
+                            android:inputType="number"
+                            android:text="@={viewModel._fourTwo}"
+                            app:colorvalue="@{viewModel.getFourTwo}"
+                            app:compareOne="@{viewModel.getFourOne}"
+                            app:compareTwo="@{viewModel.getFourThree}"
+                            />
 
                     </TableRow>
 
@@ -220,25 +249,40 @@
                             app:colorvalue="@{viewModel.getOneThree}"
                             app:compareOne="@{viewModel.getOneTwo}"
                             app:compareTwo="@{viewModel.getOneOne}"
-                            />/>
+                            />
 
                         <EditText
                             android:id="@+id/editTextNumber38"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:inputType="number" />
+                            android:inputType="number"
+                            android:text="@={viewModel._twoThree}"
+                            app:colorvalue="@{viewModel.getTwoThree}"
+                            app:compareOne="@{viewModel.getTwoTwo}"
+                            app:compareTwo="@{viewModel.getTwoOne}"
+                            />
 
                         <EditText
                             android:id="@+id/editTextNumber39"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:inputType="number" />
+                            android:inputType="number"
+                            android:text="@={viewModel._threeThree}"
+                            app:colorvalue="@{viewModel.getThreeThree}"
+                            app:compareOne="@{viewModel.getThreeTwo}"
+                            app:compareTwo="@{viewModel.getThreeOne}"
+                            />
 
                         <EditText
                             android:id="@+id/editTextNumber40"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:inputType="number" />
+                            android:inputType="number"
+                            android:text="@={viewModel._fourThree}"
+                            app:colorvalue="@{viewModel.getFourThree}"
+                            app:compareOne="@{viewModel.getFourTwo}"
+                            app:compareTwo="@{viewModel.getFourOne}"
+                            />
 
                     </TableRow>
 
