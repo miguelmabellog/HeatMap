@@ -1,236 +1,249 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".map.MapFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="@string/HeatMap"
-        android:textColor="@color/design_default_color_secondary_variant"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.heatmap.map.MapViewModel" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    </data>
 
-
-
-    <ScrollView
-        android:id="@+id/scrollView2"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12">
+        android:layout_height="match_parent"
+        tools:context=".map.MapFragment">
 
-        <HorizontalScrollView
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="@string/HeatMap"
+            android:textColor="@color/design_default_color_secondary_variant"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <ScrollView
+            android:id="@+id/scrollView2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12">
 
-            <TableLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                <TableRow
-                    android:layout_width="match_parent"
+                <TableLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/textView6"
-                        style="@style/column_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/plant_chile"
-                        android:visibility="invisible" />
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/textView13"
-                        style="@style/column_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:paddingRight="8dp"
-                        android:text="@string/billing" />
+                        <TextView
+                            android:id="@+id/textView6"
+                            style="@style/column_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/plant_chile"
+                            android:visibility="invisible" />
 
-                    <TextView
-                        android:id="@+id/textView14"
-                        style="@style/column_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:paddingRight="8dp"
-                        android:text="@string/operating_cost" />
+                        <TextView
+                            android:id="@+id/textView13"
+                            style="@style/column_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingRight="8dp"
+                            android:text="@string/billing" />
 
-                    <TextView
-                        android:id="@+id/textView15"
-                        style="@style/column_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:paddingRight="8dp"
-                        android:text="@string/Energy" />
+                        <TextView
+                            android:id="@+id/textView14"
+                            style="@style/column_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingRight="8dp"
+                            android:text="@string/operating_cost" />
 
-                    <TextView
-                        android:id="@+id/textView16"
-                        style="@style/column_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:paddingRight="8dp"
-                        android:text="@string/number_operators" />
-                </TableRow>
+                        <TextView
+                            android:id="@+id/textView15"
+                            style="@style/column_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingRight="8dp"
+                            android:text="@string/Energy" />
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/textView16"
+                            style="@style/column_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingRight="8dp"
+                            android:text="@string/number_operators" />
+                    </TableRow>
 
-                    <TextView
-                        android:id="@+id/textView8"
-                        style="@style/column_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="8dp"
-                        android:paddingBottom="8dp"
-                        android:text="@string/plant_chile" />
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                    <EditText
-                        android:id="@+id/editTextNumber20"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="number" />
+                        <TextView
+                            android:id="@+id/textView8"
+                            style="@style/column_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/plant_chile" />
 
-                    <EditText
-                        android:id="@+id/editTextNumber32"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="number" />
+                        <EditText
+                            android:id="@+id/oneOne"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:text="@={viewModel._userInput}"
+                            app:changeColor="@{viewModel.getdata}"
+                            
 
-                    <EditText
-                        android:id="@+id/editTextNumber33"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="number" />
+                             />
 
-                    <EditText
-                        android:id="@+id/editTextNumber34"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="number" />
+                        <EditText
+                            android:id="@+id/editTextNumber32"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number" />
 
-                </TableRow>
+                        <EditText
+                            android:id="@+id/editTextNumber33"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number" />
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                        <EditText
+                            android:id="@+id/editTextNumber34"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number" />
 
-                    <TextView
-                        android:id="@+id/textView9"
-                        style="@style/column_text"
-                        android:layout_width="wrap_content"
+                    </TableRow>
 
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="8dp"
-                        android:paddingBottom="8dp"
-                        android:text="@string/plant_usa" />
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-                    <EditText
-                        android:id="@+id/editTextNumber21"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="number" />
+                        <TextView
+                            android:id="@+id/textView9"
+                            style="@style/column_text"
+                            android:layout_width="wrap_content"
 
-                    <EditText
-                        android:id="@+id/editTextNumber35"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="number" />
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/plant_usa" />
 
-                    <EditText
-                        android:id="@+id/editTextNumber36"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="number" />
+                        <EditText
+                            android:id="@+id/editTextNumber21"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number" />
 
-                    <EditText
-                        android:id="@+id/editTextNumber37"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="number" />
+                        <EditText
+                            android:id="@+id/editTextNumber35"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number" />
 
-                </TableRow>
+                        <EditText
+                            android:id="@+id/editTextNumber36"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number" />
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="16dp">
+                        <EditText
+                            android:id="@+id/editTextNumber37"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number" />
 
-                    <TextView
-                        android:id="@+id/textView11"
-                        style="@style/column_text"
-                        android:layout_width="wrap_content"
+                    </TableRow>
 
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="8dp"
-                        android:paddingBottom="8dp"
-                        android:text="@string/plant_Colombia" />
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="16dp">
 
-                    <EditText
-                        android:id="@+id/editTextNumber22"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="number" />
+                        <TextView
+                            android:id="@+id/textView11"
+                            style="@style/column_text"
+                            android:layout_width="wrap_content"
 
-                    <EditText
-                        android:id="@+id/editTextNumber38"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="number" />
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/plant_Colombia" />
 
-                    <EditText
-                        android:id="@+id/editTextNumber39"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="number" />
+                        <EditText
+                            android:id="@+id/editTextNumber22"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number" />
 
-                    <EditText
-                        android:id="@+id/editTextNumber40"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="number" />
+                        <EditText
+                            android:id="@+id/editTextNumber38"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number" />
 
-                </TableRow>
+                        <EditText
+                            android:id="@+id/editTextNumber39"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number" />
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                        <EditText
+                            android:id="@+id/editTextNumber40"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number" />
 
+                    </TableRow>
 
-                </TableRow>
-
-            </TableLayout>
-        </HorizontalScrollView>
-
-
-    </ScrollView>
-
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                    </TableRow>
+
+                </TableLayout>
+            </HorizontalScrollView>
+
+
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
