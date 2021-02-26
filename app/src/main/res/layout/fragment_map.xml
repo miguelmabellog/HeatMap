@@ -124,9 +124,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:inputType="number"
-                            android:text="@={viewModel._userInput}"
-                            app:changeColor="@{viewModel.getdata}"
-                            
+                            android:text="@={viewModel._oneOne}"
+                            app:colorvalue="@{viewModel.getOneOne}"
+                            app:compareOne="@{viewModel.getOneTwo}"
+                            app:compareTwo="@{viewModel.getOneThree}"
 
                              />
 
@@ -168,7 +169,12 @@
                             android:id="@+id/editTextNumber21"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:inputType="number" />
+                            android:inputType="number"
+                            android:text="@={viewModel._oneTwo}"
+                            app:colorvalue="@{viewModel.getOneTwo}"
+                            app:compareOne="@{viewModel.getOneOne}"
+                            app:compareTwo="@{viewModel.getOneThree}"
+                            />
 
                         <EditText
                             android:id="@+id/editTextNumber35"
@@ -209,7 +215,12 @@
                             android:id="@+id/editTextNumber22"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:inputType="number" />
+                            android:inputType="number"
+                            android:text="@={viewModel._oneThree}"
+                            app:colorvalue="@{viewModel.getOneThree}"
+                            app:compareOne="@{viewModel.getOneTwo}"
+                            app:compareTwo="@{viewModel.getOneOne}"
+                            />/>
 
                         <EditText
                             android:id="@+id/editTextNumber38"

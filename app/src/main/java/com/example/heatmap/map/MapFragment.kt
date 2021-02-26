@@ -28,10 +28,6 @@ class MapFragment : Fragment() {
         binding.lifecycleOwner=this
         viewModel = ViewModelProvider(this,viewModelFactory).get(MapViewModel::class.java)
 
-
-
-
-
         binding.viewModel=viewModel
 
 

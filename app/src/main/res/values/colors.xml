@@ -9,6 +9,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#C6FFFFFF</color>
 
-    <color name="max">#3F51B5</color>
+    <color name="min">#3F51B5</color>
+    <color name="max">#BA2424</color>
+    <color name="medium">#6A6666</color>
+    <color name="max_medium">#C85656</color>
+    <color name="min_medium">#8188B1</color>
+
+
 
 </resources>
