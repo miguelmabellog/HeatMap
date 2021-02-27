@@ -246,24 +246,60 @@ class MapViewModel(val database: PlantaDao, application: Application): AndroidVi
 
     fun show(it: List<Planta?>) {
         if(it.size>0){
-            _oneOne.value= (it[0]?.facturacion?:0F).toInt().toString()
-            _twoOne.value= (it[0]?.costos?:0F).toInt().toString()
-            _threeOne.value= (it[0]?.energia?:0F).toInt().toString()
-            _fourOne.value= (it[0]?.operarios?:0F).toInt().toString()
+            viewModelScope.launch {
+                val chile=database.findDirectorByName("Planta Chile")
+                _oneOne.value= (chile?.facturacion?:0F).toInt().toString()
+                _twoOne.value= (chile?.costos?:0F).toInt().toString()
+                _threeOne.value= (chile?.energia?:0F).toInt().toString()
+                _fourOne.value= (chile?.operarios?:0F).toInt().toString()
 
-            _oneTwo.value= (it[1]?.facturacion?:0F).toInt().toString()
-            _twoTwo.value= (it[1]?.costos?:0F).toInt().toString()
-            _threeTwo.value= (it[1]?.energia?:0F).toInt().toString()
-            _fourTwo.value= (it[1]?.operarios?:0F).toInt().toString()
+            }
 
-            _oneThree.value= (it[2]?.facturacion?:0F).toInt().toString()
-            _twoThree.value= (it[2]?.costos?:0F).toInt().toString()
-            _threeThree.value= (it[2]?.energia?:0F).toInt().toString()
-            _fourThree.value= (it[2]?.operarios?:0F).toInt().toString()
+            viewModelScope.launch {
+                val usa=database.findDirectorByName("Planta USA")
+                _oneTwo.value= (usa?.facturacion?:0F).toInt().toString()
+                _twoTwo.value= (usa?.costos?:0F).toInt().toString()
+                _threeTwo.value= (usa?.energia?:0F).toInt().toString()
+                _fourTwo.value= (usa?.operarios?:0F).toInt().toString()
+
+            }
+
+            viewModelScope.launch {
+                val colombia=database.findDirectorByName("Planta Colombia")
+                _oneThree.value= (colombia?.facturacion?:0F).toInt().toString()
+                _twoThree.value= (colombia?.costos?:0F).toInt().toString()
+                _threeThree.value= (colombia?.energia?:0F).toInt().toString()
+                _fourThree.value= (colombia?.operarios?:0F).toInt().toString()
+
+            }
+
+
+
 
 
         }
 
+    }
+    fun delete(){
+        viewModelScope.launch {
+            database.deleteAll()
+
+            _oneOne.value= ""
+            _twoOne.value= ""
+            _threeOne.value= ""
+            _fourOne.value= ""
+
+            _oneTwo.value= ""
+            _twoTwo.value= ""
+            _threeTwo.value= ""
+            _fourTwo.value= ""
+
+            _oneThree.value= ""
+            _twoThree.value= ""
+            _threeThree.value= ""
+            _fourThree.value= ""
+
+        }
     }
 
 

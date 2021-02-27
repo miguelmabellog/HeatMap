@@ -2,6 +2,7 @@ package com.example.heatmap.map
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -10,6 +11,7 @@ import androidx.preference.PreferenceManager
 import com.example.heatmap.R
 import com.example.heatmap.database.PlantaDatabase
 import com.example.heatmap.databinding.FragmentMapBinding
+import com.google.android.material.snackbar.Snackbar
 
 
 class MapFragment : Fragment() {
@@ -31,11 +33,43 @@ class MapFragment : Fragment() {
         binding.lifecycleOwner=this
         viewModel = ViewModelProvider(this,viewModelFactory).get(MapViewModel::class.java)
 
+        val preferences = PreferenceManager.getDefaultSharedPreferences(application)
+        if(preferences.getBoolean("save",false)){
+
+            Snackbar.make(
+                    requireActivity().findViewById(android.R.id.content),
+                    "Cambia los  datos con la opcion editar de la barra superior y guardarlos",
+                    Snackbar.LENGTH_INDEFINITE
+            ).apply {
+                setAction("cerrar", View.OnClickListener {
+
+                })
+                show()
+            }
+
+
+
+        }else{
+            Snackbar.make(
+                    requireActivity().findViewById(android.R.id.content),
+                    "Llena los datos y gurdarlos con la opcion de la barra superior",
+                    Snackbar.LENGTH_INDEFINITE
+            ).apply {
+                setAction("cerrar", View.OnClickListener {
+
+                })
+                show()
+            }
+
+
+        }
+
         viewModel.datos.observe(viewLifecycleOwner, Observer {
             it?.let {
                 viewModel.show(it)
             }
         })
+
 
         binding.viewModel=viewModel
 
@@ -60,13 +94,27 @@ class MapFragment : Fragment() {
                 }else{
                     viewModel.save()
                 }
+                Toast.makeText(activity,"Se ha guardado correctamente",Toast.LENGTH_SHORT).show()
 
                 true
             }
             R.id.action_edit->{
                 viewModel.enableText()
+
+                Snackbar.make(
+                        requireActivity().findViewById(android.R.id.content),
+                        "Ahora puedes editar los datos",
+                        Snackbar.LENGTH_INDEFINITE
+                ).apply {
+                    setAction("cerrar", View.OnClickListener {
+
+                    })
+                    show()
+                }
+
                 true
             }
+
 
             else -> super.onOptionsItemSelected(item)
         }

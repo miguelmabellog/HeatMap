@@ -20,4 +20,7 @@ interface PlantaDao {
 
     @Query("SELECT * FROM planta WHERE name = :fullName LIMIT 1")
     suspend fun findDirectorByName(fullName: String?): Planta?
+
+    @Query("DELETE FROM planta")
+    suspend fun deleteAll()
 }
