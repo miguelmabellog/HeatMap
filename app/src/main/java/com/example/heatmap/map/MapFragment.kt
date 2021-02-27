@@ -2,13 +2,13 @@ package com.example.heatmap.map
 
 import android.os.Bundle
 import android.view.*
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
+import androidx.preference.PreferenceManager
 import com.example.heatmap.R
+import com.example.heatmap.database.PlantaDatabase
 import com.example.heatmap.databinding.FragmentMapBinding
 
 
@@ -16,6 +16,7 @@ class MapFragment : Fragment() {
 
     private lateinit var viewModel: MapViewModel
     private lateinit var oneOne: String
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,9 +25,17 @@ class MapFragment : Fragment() {
             inflater, R.layout.fragment_map, container, false)
 
         val application = requireNotNull(this.activity).application
-        val viewModelFactory = MapViewModelFactory(application)
+        val dataSource = PlantaDatabase.getInstance(application).plantaDao
+
+        val viewModelFactory = MapViewModelFactory(dataSource,application)
         binding.lifecycleOwner=this
         viewModel = ViewModelProvider(this,viewModelFactory).get(MapViewModel::class.java)
+
+        viewModel.datos.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                viewModel.show(it)
+            }
+        })
 
         binding.viewModel=viewModel
 
@@ -43,7 +52,19 @@ class MapFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_save -> {
+                val application = requireNotNull(this.activity).application
+                val preferences = PreferenceManager.getDefaultSharedPreferences(application)
 
+                if(preferences.getBoolean("save",false)){
+                    viewModel.update()
+                }else{
+                    viewModel.save()
+                }
+
+                true
+            }
+            R.id.action_edit->{
+                viewModel.enableText()
                 true
             }
 

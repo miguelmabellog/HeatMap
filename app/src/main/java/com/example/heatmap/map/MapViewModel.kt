@@ -2,9 +2,13 @@ package com.example.heatmap.map
 
 import android.app.Application
 import androidx.lifecycle.*
+import androidx.preference.PreferenceManager
+import com.example.heatmap.database.Planta
+import com.example.heatmap.database.PlantaDao
+import kotlinx.coroutines.launch
 
 
-class MapViewModel(application: Application): AndroidViewModel(application) {
+class MapViewModel(val database: PlantaDao, application: Application): AndroidViewModel(application) {
     private val context = getApplication<Application>().applicationContext
 
     var _oneOne = MutableLiveData<String>()
@@ -141,6 +145,126 @@ class MapViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
+    private var _enables=MutableLiveData<Boolean>(true)
+    val enables:LiveData<Boolean>
+        get() = _enables
+
+    private lateinit var plantaChile:Planta
+    private lateinit var plantaUSA:Planta
+    private lateinit var plantaColombia:Planta
+
+
+    val datos=database.getPlanta()
+
+
+    val preferences = PreferenceManager.getDefaultSharedPreferences(application)
+    val editor=preferences.edit()
+
+
+    init {
+        val valor=preferences.getBoolean("save",false)
+        _enables.value = !valor
+
+    }
+
+
+
+
+    fun setPlantas(){
+        plantaChile=Planta(name="Planta Chile",
+            facturacion = getOneOne.value,
+            costos = getTwoOne.value,
+            energia = getThreeOne.value,
+            operarios = getFourOne.value)
+
+        plantaUSA=Planta(name="Planta USA",
+            facturacion = getOneTwo.value,
+            costos = getTwoTwo.value,
+            energia = getThreeTwo.value,
+            operarios = getFourTwo.value)
+
+        plantaColombia=Planta(name="Planta Colombia",
+            facturacion = getOneThree.value,
+            costos = getTwoThree.value,
+            energia = getThreeThree.value,
+            operarios = getFourThree.value)
+
+    }
+
+
+    fun save(){
+        editor.putBoolean("save",true)
+        editor.apply()
+        setPlantas()
+        _enables.value=false
+        viewModelScope.launch{
+            database.insert(plantaChile)
+            database.insert(plantaUSA)
+            database.insert(plantaColombia)
+        }
+
+    }
+
+    fun enableText(){
+        _enables.value=true
+    }
+
+    fun update(){
+        _enables.value=false
+        viewModelScope.launch {
+            val updateChile=database.findDirectorByName("Planta Chile")
+            updateChile?.facturacion=getOneOne.value
+            updateChile?.costos=getTwoOne.value
+            updateChile?.energia=getThreeOne.value
+            updateChile?.operarios=getFourOne.value
+
+            val updateUSA=database.findDirectorByName("Planta USA")
+            updateUSA?.facturacion=getOneTwo.value
+            updateUSA?.costos=getTwoTwo.value
+            updateUSA?.energia=getThreeTwo.value
+            updateUSA?.operarios=getFourTwo.value
+
+            val updateColombia=database.findDirectorByName("Planta Colombia")
+            updateColombia?.facturacion=getOneThree.value
+            updateColombia?.costos=getTwoThree.value
+            updateColombia?.energia=getThreeThree.value
+            updateColombia?.operarios=getFourThree.value
+
+            if (updateChile != null) {
+                database.update(updateChile)
+            }
+            if (updateUSA != null) {
+                database.update(updateUSA)
+            }
+            if (updateColombia != null) {
+                database.update(updateColombia)
+            }
+        }
+    }
+
+
+
+    fun show(it: List<Planta?>) {
+        if(it.size>0){
+            _oneOne.value= (it[0]?.facturacion?:0F).toInt().toString()
+            _twoOne.value= (it[0]?.costos?:0F).toInt().toString()
+            _threeOne.value= (it[0]?.energia?:0F).toInt().toString()
+            _fourOne.value= (it[0]?.operarios?:0F).toInt().toString()
+
+            _oneTwo.value= (it[1]?.facturacion?:0F).toInt().toString()
+            _twoTwo.value= (it[1]?.costos?:0F).toInt().toString()
+            _threeTwo.value= (it[1]?.energia?:0F).toInt().toString()
+            _fourTwo.value= (it[1]?.operarios?:0F).toInt().toString()
+
+            _oneThree.value= (it[2]?.facturacion?:0F).toInt().toString()
+            _twoThree.value= (it[2]?.costos?:0F).toInt().toString()
+            _threeThree.value= (it[2]?.energia?:0F).toInt().toString()
+            _fourThree.value= (it[2]?.operarios?:0F).toInt().toString()
+
+
+        }
+
+    }
 
 
 }
