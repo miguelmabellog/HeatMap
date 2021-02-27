@@ -15,11 +15,11 @@ SharePreferences: Almacena datos de poco tamaño que persisten en la aplicacion.
 
 En un comienzo se pueden llenar los datos y de forma reactiva se activaran los colores representativos, una vez lleno se selecciona guardar en la barra superior.
 
-<img src="video1.gif" width="220" height="400"/>
+<img src="video2.gif" width="220" height="400"/>
 
 Para editar los datos se selecciona la opcion de la barra, update, que permite habilitar la edicion de datos y una vez editados se vuelven a guardar
 
-<img src="video2.gif" width="220" height="400"/>
+<img src="video1.gif" width="220" height="400"/>
 
 
 ## License
